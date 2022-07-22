@@ -7,36 +7,31 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%!int i ,j,rows=5; %>
+	<%!int i ,j,rows=5,cnt =0;%>
 <%for(i=1;i<=rows;i++) {
-	%>
+		%>
 	
 	<%
-	for(j=1;j<=i;j++){
-	if(j==1){
-	%>
+		for(j=1;j<=i;j++){%>
 		
-		<font color = 'red' ><%=j%></font>
-		<%}//if%>
-		<%if(j==2){%>	
-			<font color = 'green' ><%=j%></font>
-		<%}%>
-		<%if(j==3){%>	
-			<font color = 'blue' ><%=j%></font>
-		<%}%>
-		<%if(j==4){%>	
-			<font color = 'red' ><%=j%></font>
-		<%}%>
-		<%if(j==5){%>	
-			<font color = 'green' ><%=j%></font>
-		<%}%>
+	
+			 <%cnt ++;
+		 	if(cnt ==1 || cnt == 4 || cnt == 7 || cnt == 10 || cnt ==13){
+				 %>
+				 <font color = "red" ><%out.println("*");%></font>
+			 <% }//if%>
+			<%  if(cnt ==2 || cnt == 5|| cnt == 8 || cnt == 11 || cnt ==14){
+				%>
+			 <font color = "blue" ><%out.println("*");%></font>
+		 <% }//if%>
+		 <%if(cnt ==3 || cnt == 6 || cnt == 9 || cnt == 12|| cnt ==15){
+			 %>
+			 <font color = "green" ><%out.println("*");%></font>
+		 <% }//if%>
+		 
 		
-		
-		
-	<%}//j loop%>
+	<%}%>
 	<br>
-		<%
-}//..i for loop
-%>
+<%}%>
 </body>
 </html>

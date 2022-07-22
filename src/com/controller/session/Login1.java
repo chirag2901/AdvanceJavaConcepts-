@@ -24,25 +24,25 @@ public class Login1 extends HttpServlet {
 	 */
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		Map<String, String> map = new TreeMap<String, String>();
-		map.put("vijay", "vijay123");
-		map.put("chirag", "chirag123");
-		map.put("rohan", "rohan123");
-		
+//		Map<String, String> map = new TreeMap<String, String>();
+//		map.put("vijay", "vijay123");
+//		map.put("chirag", "chirag123");
+//		map.put("rohan", "rohan123");
+//		
 //		String user1 = "chirag";
 //		String user2 = "rohan";
 //		String user3 = "devansh";
 //		String pass1  = "chirag@123";
 //		String pass2  = "rohan@123";
 //		String pass3  = "devansh@123";
-//		String username =(String) session.getAttribute("username");
-//		String password = (String) session.getAttribute("password");
+		String username =(String) session.getAttribute("username");
+		String password = (String) session.getAttribute("password");
 		String user = request.getParameter("username");
 		String pass = request.getParameter("password");
-//		System.out.println("username"+username);
-//		System.out.println("password"+password);
-//		System.out.println("user"+user);
-//		System.out.println("pass"+pass);
+		System.out.println("username"+username);
+		System.out.println("password"+password);
+		System.out.println("user"+user);
+		System.out.println("pass"+pass);
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.print("<html><body>");
@@ -74,27 +74,38 @@ public class Login1 extends HttpServlet {
 			session.invalidate();
 		}
 		*/
-		for(Map.Entry m : map.entrySet())
-		{
-			if(user.equals(m.getKey())&& pass.equals(m.getValue())) {
-				this.b =true;
-			}
-		}
-		if(b) {
+//		for(Map.Entry m : map.entrySet())
+//		{
+//			if(user.equals(m.getKey())&& pass.equals(m.getValue())) {
+//				this.b =true;
+//			}
+//		}
+//		if(b) {
+//			out.println("LoginSuccessful\n"+"<br>");
+//			out.print(user+" is logged in...");
+//			System.out.println(user+"is logged in..");
+//			System.out.println(session.getId());
+//			session.setMaxInactiveInterval(10);
+//			session.invalidate();
+//			b = false;
+//		}
+//		else {
+//			out.print("<font color = 'red' size = '4' >INVALID CREDENTIALS</font><br><br>");
+//			out.print("LOGIN FAILED-TRY AGAIN");
+//			System.out.println("login Failed");
+//			request.getRequestDispatcher("login1.html").include(request, response);
+//				}
+		if(user.equals(username) && pass.equals(password)) {
 			out.println("LoginSuccessful\n"+"<br>");
 			out.print(user+" is logged in...");
-			System.out.println(user+"is logged in..");
-			System.out.println(session.getId());
-			session.setMaxInactiveInterval(10);
-			session.invalidate();
-			b = false;
+//			response.sendRedirect("invalidate.html");
 		}
 		else {
-			out.print("<font color = 'red' size = '4' >INVALID CREDENTIALS</font><br><br>");
-			out.print("LOGIN FAILED-TRY AGAIN");
-			System.out.println("login Failed");
-			request.getRequestDispatcher("login1.html").include(request, response);
-				}
+				out.print("<font color = 'red' size = '4' >INVALID CREDENTIALS</font><br><br>");
+				out.print("LOGIN FAILED-TRY AGAIN");
+				System.out.println("login Failed");
+				request.getRequestDispatcher("login1.html").include(request, response);
+		}
 		out.print("</body></html>");
 		out.close();
 	}
